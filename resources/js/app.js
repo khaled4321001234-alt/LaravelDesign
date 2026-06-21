@@ -12,14 +12,35 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMobileNav() {
     const toggle = document.getElementById('mobile-nav-toggle');
     const menu = document.getElementById('mobile-nav-menu');
+    const iconOpen = document.getElementById('mobile-nav-icon-open');
+    const iconClose = document.getElementById('mobile-nav-icon-close');
+    const links = menu?.querySelectorAll('[data-mobile-nav-link]');
 
     if (!toggle || !menu) {
         return;
     }
 
+    const setOpen = (open) => {
+        menu.classList.toggle('is-open', open);
+        menu.setAttribute('aria-hidden', String(!open));
+        toggle.setAttribute('aria-expanded', String(open));
+        iconOpen?.classList.toggle('hidden', open);
+        iconClose?.classList.toggle('hidden', !open);
+        document.body.classList.toggle('overflow-hidden', open);
+    };
+
     toggle.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-        toggle.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+        setOpen(!menu.classList.contains('is-open'));
+    });
+
+    links?.forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1280) {
+            setOpen(false);
+        }
     });
 }
 

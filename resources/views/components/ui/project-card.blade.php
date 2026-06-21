@@ -28,7 +28,7 @@
         </div>
         <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-primary-hover">
             {{ __('site.projects.details') }}
-            <x-icons.arrow-left class="size-4 rtl:rotate-180" />
+            <x-icons.arrow-forward class="size-4" />
         </a>
     </div>
 </div>

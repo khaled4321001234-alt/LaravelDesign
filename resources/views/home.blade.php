@@ -81,13 +81,14 @@
                         :image="$item['image']"
                         :date="__($item['date_key'])"
                         :title="__($item['title_key'])"
+                        :url="route('news.show', $item['slug'])"
                         @class(['reveal', 'reveal-delay-' . min($index + 1, 4)])
                     />
                 @endforeach
             </div>
 
             <div class="mt-10 text-center reveal">
-                <a href="#" class="btn-secondary">{{ __('site.news.view_all') }}</a>
+                <a href="{{ route('news.index') }}" class="btn-secondary">{{ __('site.news.view_all') }}</a>
             </div>
         </div>
     </section>

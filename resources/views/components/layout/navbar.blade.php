@@ -1,7 +1,27 @@
+@php
+    $resolveNav = function (array $item): array {
+        $routeName = $item['route'];
+
+        $href = match (true) {
+            $routeName === '#' => '#',
+            \Illuminate\Support\Facades\Route::has($routeName) => route($routeName),
+            default => $routeName,
+        };
+
+        $isActive = match (true) {
+            $routeName === 'home' => request()->routeIs('home'),
+            $routeName === 'news.index' => request()->routeIs('news.*'),
+            $routeName === 'contact.index' => request()->routeIs('contact.*'),
+            default => false,
+        };
+
+        return compact('href', 'isActive');
+    };
+@endphp
+
 <header class="sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur-sm">
     <div class="container-site">
         <div class="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3.5">
-            {{-- Logo (start in RTL) --}}
             <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-2.5">
                 <x-layout.logo class="size-11" />
                 <div class="hidden sm:block">
@@ -10,20 +30,15 @@
                 </div>
             </a>
 
-            {{-- Desktop navigation (centered) --}}
             <nav class="hidden items-center justify-center gap-0.5 xl:flex" aria-label="{{ __('site.nav.home') }}">
                 @foreach (config('site.nav') as $item)
-                    @php
-                        $isActive = ($item['route'] === 'home' && request()->routeIs('home'));
-                        $href = $item['route'] === 'home' ? route('home') : $item['route'];
-                    @endphp
-                    <a href="{{ $href }}" @class(['nav-link', 'nav-link-active' => $isActive])>
+                    @php($nav = $resolveNav($item))
+                    <a href="{{ $nav['href'] }}" @class(['nav-link', 'nav-link-active' => $nav['isActive']])>
                         {{ __($item['label']) }}
                     </a>
                 @endforeach
             </nav>
 
-            {{-- Donate CTA + Mobile toggle (end in RTL) --}}
             <div class="flex items-center justify-end gap-3">
                 <a href="#" class="btn-primary hidden sm:inline-flex">
                     <x-icons.heart class="size-4" />
@@ -33,38 +48,51 @@
                 <button
                     id="mobile-nav-toggle"
                     type="button"
-                    class="inline-flex items-center justify-center rounded-theme p-2 text-secondary xl:hidden"
+                    class="inline-flex size-10 items-center justify-center rounded-theme text-secondary transition-colors hover:bg-surface-muted xl:hidden"
                     aria-expanded="false"
                     aria-controls="mobile-nav-menu"
+                    aria-label="{{ __('site.nav.menu') }}"
                 >
-                    <x-icons.menu class="size-6" />
+                    <x-icons.menu id="mobile-nav-icon-open" class="size-6" />
+                    <x-icons.x id="mobile-nav-icon-close" class="hidden size-6" />
                 </button>
             </div>
         </div>
 
-        {{-- Mobile navigation --}}
-        <nav id="mobile-nav-menu" class="hidden border-t border-border pb-4 xl:hidden" aria-label="Mobile">
-            <div class="flex flex-col gap-1 pt-3">
-                @foreach (config('site.nav') as $item)
-                    @php
-                        $isActive = ($item['route'] === 'home' && request()->routeIs('home'));
-                        $href = $item['route'] === 'home' ? route('home') : $item['route'];
-                    @endphp
-                    <a
-                        href="{{ $href }}"
-                        @class([
-                            'rounded-theme px-3 py-2.5 text-sm font-medium transition-colors',
-                            'bg-primary-light text-primary' => $isActive,
-                            'text-text hover:bg-surface-muted' => ! $isActive,
-                        ])
-                    >
-                        {{ __($item['label']) }}
+        <nav
+            id="mobile-nav-menu"
+            class="mobile-nav-panel xl:hidden"
+            aria-label="Mobile"
+            aria-hidden="true"
+        >
+            <div class="mobile-nav-panel-inner">
+                <div class="flex flex-col gap-1 py-3">
+                    @foreach (config('site.nav') as $item)
+                        @php($nav = $resolveNav($item))
+                        <a
+                            href="{{ $nav['href'] }}"
+                            data-mobile-nav-link
+                            @class([
+                                'mobile-nav-link',
+                                'mobile-nav-link-active' => $nav['isActive'],
+                            ])
+                        >
+                            <span>{{ __($item['label']) }}</span>
+                            @if ($nav['isActive'])
+                                <span class="mobile-nav-link-dot" aria-hidden="true"></span>
+                            @else
+                                <x-icons.arrow-forward class="size-4 opacity-40" />
+                            @endif
+                        </a>
+                    @endforeach
+                </div>
+
+                <div class="border-t border-border py-3">
+                    <a href="#" data-mobile-nav-link class="btn-primary w-full">
+                        <x-icons.heart class="size-4" />
+                        {{ __('site.nav.donate') }}
                     </a>
-                @endforeach
-                <a href="#" class="btn-primary mt-2 w-full sm:hidden">
-                    <x-icons.heart class="size-4" />
-                    {{ __('site.nav.donate') }}
-                </a>
+                </div>
             </div>
         </nav>
     </div>

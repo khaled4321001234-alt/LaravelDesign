@@ -7,7 +7,8 @@
 /* -------------------------------------------------------------------------- */
 /* Theme variables                                                            */
 /* -------------------------------------------------------------------------- */
-:root {
+:root,
+[data-theme='life'] {
     --theme-primary: #4caf50;
     --theme-primary-hover: #43a047;
     --theme-primary-light: #e8f5e9;
@@ -25,6 +26,74 @@
     --theme-topbar: #f8f9fb;
     --theme-shadow: 0 4px 24px rgb(0 51 102 / 8%);
     --theme-shadow-lg: 0 8px 40px rgb(0 51 102 / 12%);
+}
+
+[data-theme='ocean'] {
+    --theme-primary: #0288d1;
+    --theme-primary-hover: #0277bd;
+    --theme-primary-light: #e1f5fe;
+    --theme-secondary: #01579b;
+    --theme-secondary-hover: #014a85;
+    --theme-secondary-light: #e3f2fd;
+    --theme-accent: #00bcd4;
+    --theme-surface-dark: #01579b;
+    --theme-shadow: 0 4px 24px rgb(1 87 155 / 8%);
+    --theme-shadow-lg: 0 8px 40px rgb(1 87 155 / 12%);
+}
+
+[data-theme='sunset'] {
+    --theme-primary: #ff7043;
+    --theme-primary-hover: #f4511e;
+    --theme-primary-light: #fbe9e7;
+    --theme-secondary: #bf360c;
+    --theme-secondary-hover: #a02f0a;
+    --theme-secondary-light: #fbe9e7;
+    --theme-accent: #ffb74d;
+    --theme-surface-dark: #bf360c;
+    --theme-shadow: 0 4px 24px rgb(191 54 12 / 8%);
+    --theme-shadow-lg: 0 8px 40px rgb(191 54 12 / 12%);
+}
+
+[data-theme='royal'] {
+    --theme-primary: #7c4dff;
+    --theme-primary-hover: #651fff;
+    --theme-primary-light: #ede7f6;
+    --theme-secondary: #311b92;
+    --theme-secondary-hover: #28157a;
+    --theme-secondary-light: #ede7f6;
+    --theme-accent: #ffd740;
+    --theme-surface-dark: #311b92;
+    --theme-shadow: 0 4px 24px rgb(49 27 146 / 8%);
+    --theme-shadow-lg: 0 8px 40px rgb(49 27 146 / 12%);
+}
+
+[data-theme='forest'] {
+    --theme-primary: #2e7d32;
+    --theme-primary-hover: #1b5e20;
+    --theme-primary-light: #e8f5e9;
+    --theme-secondary: #1b5e20;
+    --theme-secondary-hover: #144a19;
+    --theme-secondary-light: #e8f5e9;
+    --theme-accent: #8bc34a;
+    --theme-surface-dark: #1b5e20;
+    --theme-shadow: 0 4px 24px rgb(27 94 32 / 8%);
+    --theme-shadow-lg: 0 8px 40px rgb(27 94 32 / 12%);
+}
+
+[data-theme='rose'] {
+    --theme-primary: #e91e63;
+    --theme-primary-hover: #c2185b;
+    --theme-primary-light: #fce4ec;
+    --theme-secondary: #880e4f;
+    --theme-secondary-hover: #6a0a3d;
+    --theme-secondary-light: #fce4ec;
+    --theme-accent: #ff4081;
+    --theme-surface-dark: #880e4f;
+    --theme-shadow: 0 4px 24px rgb(136 14 79 / 8%);
+    --theme-shadow-lg: 0 8px 40px rgb(136 14 79 / 12%);
+}
+
+:root {
     --theme-radius: 0.5rem;
     --theme-radius-lg: 0.75rem;
     --theme-font-ar: 'Tajawal', ui-sans-serif, system-ui, sans-serif;
@@ -103,6 +172,12 @@
         scroll-behavior: smooth;
     }
 
+    html.theme-animate *,
+    html.theme-animate *::before,
+    html.theme-animate *::after {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease;
+    }
+
     [dir='rtl'] body {
         font-family: var(--theme-font-ar);
     }
@@ -143,6 +218,31 @@
     .nav-link-active::after {
         content: '';
         @apply absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-primary;
+    }
+
+    .mobile-nav-panel {
+        @apply grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out;
+        grid-template-rows: 0fr;
+    }
+
+    .mobile-nav-panel.is-open {
+        grid-template-rows: 1fr;
+    }
+
+    .mobile-nav-panel-inner {
+        @apply min-h-0 overflow-hidden border-t border-border;
+    }
+
+    .mobile-nav-link {
+        @apply flex items-center justify-between rounded-theme px-4 py-3 text-sm font-medium text-text transition-all duration-200 hover:bg-surface-muted;
+    }
+
+    .mobile-nav-link-active {
+        @apply border-s-[3px] border-primary bg-primary-light font-semibold text-primary hover:bg-primary-light;
+    }
+
+    .mobile-nav-link-dot {
+        @apply size-2 shrink-0 rounded-full bg-primary;
     }
 
     .card-base {
@@ -209,6 +309,62 @@
 
     .partner-logo {
         @apply flex h-16 w-32 items-center justify-center grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105;
+    }
+
+    .pagination-btn {
+        @apply flex size-10 items-center justify-center rounded-theme border border-border bg-surface text-sm font-medium text-text transition-all duration-200 hover:border-primary hover:text-primary;
+    }
+
+    .pagination-btn-active {
+        @apply border-primary bg-primary text-text-inverse hover:bg-primary-hover hover:text-text-inverse;
+    }
+
+    .pagination-btn-disabled {
+        @apply cursor-not-allowed opacity-40 hover:border-border hover:text-text;
+    }
+
+    .form-label {
+        @apply mb-1.5 block text-sm font-medium text-secondary;
+    }
+
+    .form-input {
+        @apply w-full rounded-theme border border-border bg-surface px-4 py-2.5 text-sm text-text transition-colors duration-200 placeholder:text-text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+    }
+
+    .form-input-error {
+        @apply border-red-400 focus:border-red-400 focus:ring-red-400/20;
+    }
+
+    .form-error {
+        @apply mt-1.5 text-xs text-red-500;
+    }
+
+    .theme-card {
+        @apply overflow-hidden rounded-theme-lg border-2 border-border bg-surface shadow-theme transition-all duration-300 hover:-translate-y-1 hover:shadow-theme-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    }
+
+    .theme-card-active {
+        @apply border-primary ring-2 ring-primary/20;
+    }
+
+    .theme-card-preview {
+        @apply flex h-20 items-end gap-1 bg-surface-muted p-3;
+    }
+
+    .theme-card-swatch {
+        @apply h-10 w-1/3 rounded-theme;
+    }
+
+    .theme-card-surface {
+        @apply h-10 flex-1 rounded-theme border border-border bg-surface;
+    }
+
+    .theme-card-body {
+        @apply p-4;
+    }
+
+    .theme-card-badge {
+        @apply rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold text-text-inverse;
     }
 }
 

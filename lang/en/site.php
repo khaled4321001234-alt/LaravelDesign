@@ -15,10 +15,39 @@ return [
         'join' => 'Join Us',
         'contact' => 'Contact Us',
         'donate' => 'Donate Now',
+        'menu' => 'Open menu',
     ],
 
     'contact' => [
         'location' => 'Gaza - Palestine',
+        'page_title' => 'Contact Us',
+        'page_subtitle' => 'We are happy to hear from you. Send your inquiry or message and we will respond as soon as possible.',
+        'info_title' => 'Contact Information',
+        'info_desc' => 'You can reach us through any of the following channels or via the contact form.',
+        'address_title' => 'Address',
+        'email_title' => 'Email',
+        'phone_title' => 'Phone',
+        'hours_title' => 'Working Hours',
+        'hours_value' => 'Sunday - Thursday: 9:00 AM - 5:00 PM',
+        'follow_us' => 'Follow Us',
+        'form_title' => 'Send a Message',
+        'form_desc' => 'Fill out the form below and we will get back to you as soon as possible.',
+        'success' => 'Your message has been sent successfully. We will contact you soon.',
+        'mail_subject' => 'Contact Message: :subject',
+        'mail_heading' => 'New message from LiFe website',
+        'form' => [
+            'name' => 'Full Name',
+            'name_placeholder' => 'Enter your full name',
+            'email' => 'Email Address',
+            'email_placeholder' => 'example@email.com',
+            'phone' => 'Phone Number',
+            'phone_placeholder' => '+970 599 000 000',
+            'subject' => 'Subject',
+            'subject_placeholder' => 'Subject of your message',
+            'message' => 'Message',
+            'message_placeholder' => 'Write your message here...',
+            'submit' => 'Send Message',
+        ],
     ],
 
     'hero' => [
@@ -68,15 +97,75 @@ return [
 
     'news' => [
         'title' => 'Latest News',
+        'page_title' => 'News',
+        'page_subtitle' => 'Follow the latest updates on our humanitarian and development activities.',
         'view_all' => 'View All News',
+        'read_more' => 'Read More',
+        'back_to_news' => 'Back to News',
+        'related' => 'Related News',
+        'empty' => 'No news available at the moment.',
+        'pagination_prev' => 'Previous page',
+        'pagination_next' => 'Next page',
+
         'item1_date' => 'June 15, 2024',
         'item1_title' => 'Launch of Emergency Relief Campaign for Affected Families',
+        'item1_excerpt' => 'The foundation launched an urgent relief campaign providing food and medical aid to affected families.',
+        'item1_body' => "LiFe Foundation launched an emergency relief campaign targeting hundreds of affected families in the most needy areas, distributing food baskets, shelter materials, and primary medical aid.\n\nThis campaign is part of our rapid response to humanitarian crises, in coordination with local and international partners to ensure aid reaches those who need it.\n\nWe invite donors and volunteers to contribute to supporting this campaign and extending a helping hand to families in need.",
+
         'item2_date' => 'June 10, 2024',
         'item2_title' => 'Opening of New Health Center in Refugee Camp',
+        'item2_excerpt' => 'We opened a new health center providing primary care and vaccinations for refugees.',
+        'item2_body' => "LiFe Foundation opened a new health center in a refugee camp, equipped with essential medical equipment and a team of volunteer doctors and nurses.\n\nThe center provides medical examinations, vaccinations, maternal and child care, as well as health awareness programs.\n\nThe center is expected to serve more than 3,000 people monthly, contributing to improved health in host communities.",
+
         'item3_date' => 'June 5, 2024',
         'item3_title' => 'New Education Program Benefits 500 Children',
+        'item3_excerpt' => 'A comprehensive education program launched to support out-of-school children.',
+        'item3_body' => "The foundation launched a new education program targeting 500 children in underserved areas, including remedial lessons, school supplies, and psychosocial support programs.\n\nThe program focuses on reintegrating out-of-school children and providing a safe, stimulating learning environment.\n\nIt also includes training local teachers and developing curricula suited to community needs.",
+
         'item4_date' => 'June 1, 2024',
         'item4_title' => 'New Partnership with International Organization',
+        'item4_excerpt' => 'The foundation signed a strategic partnership to fund sustainable development projects.',
+        'item4_body' => "LiFe Foundation signed a strategic partnership with a leading international humanitarian organization to fund and implement sustainable development projects.\n\nThe partnership covers water and sanitation, education, and economic empowerment for needy families.\n\nThis partnership reflects international confidence in the foundation's capabilities and expertise in managing humanitarian projects efficiently and transparently.",
+
+        'item5_date' => 'May 28, 2024',
+        'item5_title' => 'Winter Aid Distributed to 800 Families',
+        'item5_excerpt' => 'A campaign distributing blankets and winter clothing to the most needy families has concluded.',
+        'item5_body' => "LiFe Foundation concluded its winter aid distribution campaign benefiting 800 families in cold regions, distributing blankets, winter clothing, and heating materials.\n\nThe campaign responded to forecasts of severe cold weather, in coordination with our field teams.\n\nWe thank all donors who contributed to the success of this campaign.",
+
+        'item6_date' => 'May 22, 2024',
+        'item6_title' => 'Volunteer Training Workshop on Relief Work',
+        'item6_excerpt' => 'The foundation organized a workshop to prepare 40 volunteers in humanitarian work fundamentals.',
+        'item6_body' => "LiFe Foundation organized a specialized workshop on humanitarian relief, with 40 volunteers from various disciplines participating.\n\nThe workshop covered crisis management, humanitarian standards, and communication with beneficiaries.\n\nThe program aims to build volunteer capacity and strengthen field team readiness.",
+
+        'item7_date' => 'May 18, 2024',
+        'item7_title' => 'Clean Water Project Completed in Remote Village',
+        'item7_excerpt' => 'A new water well now serves more than 2,000 people in an underserved village.',
+        'item7_body' => "The foundation announced completion of a clean water project in a remote village, with a new well drilled and a distribution network installed.\n\nThe project serves more than 2,000 people, ending their daily struggle to access safe drinking water.\n\nThe project is part of the water security program implemented by the foundation in the most needy areas.",
+
+        'item8_date' => 'May 12, 2024',
+        'item8_title' => 'New Orphan Sponsorship Campaign',
+        'item8_excerpt' => 'A campaign launched to sponsor 200 orphans with educational and health support.',
+        'item8_body' => "LiFe Foundation launched a new orphan sponsorship campaign targeting 200 orphaned children, providing monthly financial support, healthcare, and education.\n\nSponsorship includes school supplies, regular checkups, and psychosocial follow-up.\n\nWe invite benefactors to contribute to sponsoring an orphan and bringing joy to a child in need.",
+
+        'item9_date' => 'May 5, 2024',
+        'item9_title' => 'School Health Awareness Campaign',
+        'item9_excerpt' => 'We ran a health awareness campaign in 15 schools on hygiene and disease prevention.',
+        'item9_body' => "Foundation teams implemented a health awareness campaign in 15 schools, including interactive sessions on personal hygiene, handwashing, and infectious disease prevention.\n\nMore than 3,000 students benefited, along with distribution of awareness materials.\n\nThis campaign is part of the community health program run by the foundation.",
+
+        'item10_date' => 'April 28, 2024',
+        'item10_title' => 'Food Security Initiative for Rural Families',
+        'item10_excerpt' => 'We launched an initiative providing monthly food baskets to 300 rural families.',
+        'item10_body' => "The foundation launched a food security initiative targeting 300 families in rural areas, providing complete monthly food baskets.\n\nBaskets include staples such as grains, oils, legumes, and essential food items.\n\nThe program aims to reduce food insecurity and improve nutrition for needy families.",
+
+        'item11_date' => 'April 20, 2024',
+        'item11_title' => '2023 Annual Report Released',
+        'item11_excerpt' => 'We published our annual report highlighting achievements and financial transparency.',
+        'item11_body' => "LiFe Foundation released its 2023 annual report documenting the foundation's achievements throughout the year.\n\nThe report includes details of completed projects, number of beneficiaries, and audited financial statements.\n\nThe full report is available in the reports section of our website.",
+
+        'item12_date' => 'April 10, 2024',
+        'item12_title' => 'Youth Empowerment and Entrepreneurship Program',
+        'item12_excerpt' => 'A program launched to train 50 youth in entrepreneurship and self-employment skills.',
+        'item12_body' => "The youth empowerment program launched, targeting 50 young men and women with training in entrepreneurship, business planning, and access to funding.\n\nThe program includes practical workshops and mentoring from business experts.\n\nIt aims to economically empower youth and create sustainable employment opportunities.",
     ],
 
     'impact' => [
@@ -93,6 +182,43 @@ return [
 
     'partners' => [
         'title' => 'Our Partners',
+    ],
+
+    'settings' => [
+        'page_title' => 'Settings',
+        'page_subtitle' => 'Customize the site appearance to your preference.',
+        'appearance_title' => 'Appearance',
+        'appearance_desc' => 'Choose a theme that suits you. It applies instantly across all pages.',
+        'active' => 'Active',
+        'theme_updated' => 'Theme changed successfully.',
+        'theme_hint' => 'Your selected theme is saved in the browser session and applied to all pages.',
+    ],
+
+    'themes' => [
+        'life' => [
+            'name' => 'LiFe',
+            'desc' => 'Default theme — green and navy, matching the foundation identity.',
+        ],
+        'ocean' => [
+            'name' => 'Ocean',
+            'desc' => 'Calm blue tones, professional and trustworthy look.',
+        ],
+        'sunset' => [
+            'name' => 'Sunset',
+            'desc' => 'Warm orange tones, energetic and vibrant.',
+        ],
+        'royal' => [
+            'name' => 'Royal',
+            'desc' => 'Purple and violet, elegant and distinctive.',
+        ],
+        'forest' => [
+            'name' => 'Forest',
+            'desc' => 'Deep natural green, symbolizing growth and sustainability.',
+        ],
+        'rose' => [
+            'name' => 'Rose',
+            'desc' => 'Pink and red, suited for humanitarian initiatives.',
+        ],
     ],
 
     'footer' => [

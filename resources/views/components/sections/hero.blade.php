@@ -54,10 +54,10 @@
     </div>
 
     <button data-prev type="button" class="absolute start-4 top-1/2 z-30 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-text-inverse backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-white/30" aria-label="Previous">
-        <x-icons.arrow-left class="size-5" />
+        <x-icons.arrow-back class="size-5" />
     </button>
     <button data-next type="button" class="absolute end-4 top-1/2 z-30 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-text-inverse backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-white/30" aria-label="Next">
-        <x-icons.arrow-right class="size-5" />
+        <x-icons.arrow-forward class="size-5" />
     </button>
 
     <div class="absolute inset-x-0 bottom-6 z-30 flex justify-center gap-2.5">

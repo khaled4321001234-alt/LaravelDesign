@@ -20,10 +20,10 @@ return [
         ['route' => '#', 'label' => 'site.nav.about'],
         ['route' => '#', 'label' => 'site.nav.programs'],
         ['route' => '#', 'label' => 'site.nav.projects'],
-        ['route' => '#', 'label' => 'site.nav.news'],
+        ['route' => 'news.index', 'label' => 'site.nav.news'],
         ['route' => '#', 'label' => 'site.nav.reports'],
         ['route' => '#', 'label' => 'site.nav.join'],
-        ['route' => '#', 'label' => 'site.nav.contact'],
+        ['route' => 'contact.index', 'label' => 'site.nav.contact'],
     ],
 
     'hero_slides' => [
@@ -81,29 +81,6 @@ return [
             'title_key' => 'site.projects.project3_title',
             'location_key' => 'site.projects.location_gaza',
             'progress' => 45,
-        ],
-    ],
-
-    'news' => [
-        [
-            'image' => 'images/news-1.jpg',
-            'date_key' => 'site.news.item1_date',
-            'title_key' => 'site.news.item1_title',
-        ],
-        [
-            'image' => 'images/news-2.jpg',
-            'date_key' => 'site.news.item2_date',
-            'title_key' => 'site.news.item2_title',
-        ],
-        [
-            'image' => 'images/news-3.jpg',
-            'date_key' => 'site.news.item3_date',
-            'title_key' => 'site.news.item3_title',
-        ],
-        [
-            'image' => 'images/news-4.jpg',
-            'date_key' => 'site.news.item4_date',
-            'title_key' => 'site.news.item4_title',
         ],
     ],
 
