@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@font-face {
+    font-family: 'Cairo';
+    src: url('/Cairo-VariableFont_slnt%2Cwght.ttf') format('truetype');
+    font-weight: 200 1000;
+    font-style: normal;
+    font-display: swap;
+}
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../views/**/*.blade.php';
@@ -96,8 +104,8 @@
 :root {
     --theme-radius: 0.5rem;
     --theme-radius-lg: 0.75rem;
-    --theme-font-ar: 'Tajawal', ui-sans-serif, system-ui, sans-serif;
-    --theme-font-en: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --theme-font-ar: 'Cairo', ui-sans-serif, system-ui, sans-serif;
+    --theme-font-en: 'Cairo', ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme {
@@ -220,6 +228,40 @@
         @apply absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-primary;
     }
 
+    .nav-dropdown {
+        @apply relative;
+    }
+
+    .nav-dropdown-trigger {
+        @apply inline-flex items-center gap-1;
+    }
+
+    .nav-dropdown-chevron {
+        @apply transition-transform duration-200;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown-chevron {
+        @apply rotate-180;
+    }
+
+    .nav-dropdown-menu {
+        @apply invisible absolute start-0 top-full z-50 mt-1 min-w-44 origin-top scale-95 rounded-theme-lg border border-border bg-surface py-1 opacity-0 shadow-theme-lg transition-all duration-200;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown-menu,
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+        @apply visible scale-100 opacity-100;
+    }
+
+    .nav-dropdown-item {
+        @apply block px-4 py-2.5 text-sm font-medium text-text transition-colors duration-200 hover:bg-surface-muted hover:text-primary;
+    }
+
+    .nav-dropdown-item-active {
+        @apply bg-primary-light text-primary;
+    }
+
     .mobile-nav-panel {
         @apply grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out;
         grid-template-rows: 0fr;
@@ -243,6 +285,26 @@
 
     .mobile-nav-link-dot {
         @apply size-2 shrink-0 rounded-full bg-primary;
+    }
+
+    .mobile-nav-submenu {
+        @apply flex flex-col gap-0.5 pb-1 ps-4;
+    }
+
+    .mobile-nav-sublink {
+        @apply rounded-theme px-4 py-2.5 text-sm font-medium text-text-muted transition-colors duration-200 hover:bg-surface-muted hover:text-primary;
+    }
+
+    .mobile-nav-sublink-active {
+        @apply bg-primary-light font-semibold text-primary hover:bg-primary-light;
+    }
+
+    [data-mobile-nav-dropdown].is-open .mobile-nav-dropdown-chevron {
+        @apply rotate-180;
+    }
+
+    .mobile-nav-dropdown-chevron {
+        @apply transition-transform duration-200;
     }
 
     .card-base {

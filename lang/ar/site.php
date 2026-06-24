@@ -245,4 +245,20 @@ return [
         'switch_to' => 'English',
     ],
 
+    'auth' => [
+        'login' => 'تسجيل الدخول',
+        'logout' => 'تسجيل الخروج',
+        'login_subtitle' => 'أدخل بياناتك للوصول إلى حسابك',
+        'email' => 'البريد الإلكتروني',
+        'email_placeholder' => 'admin@life-org.org',
+        'password' => 'كلمة المرور',
+        'password_placeholder' => '••••••••',
+        'remember' => 'تذكرني',
+        'submit' => 'دخول',
+        'back_home' => 'العودة للرئيسية',
+        'no_account' => 'ليس لديك حساب؟',
+        'failed' => 'بيانات الدخول غير صحيحة.',
+        'throttle' => 'محاولات كثيرة. حاول مجدداً بعد :seconds ثانية.',
+    ],
+
 ];

@@ -33,9 +33,41 @@
             <nav class="hidden items-center justify-center gap-0.5 xl:flex" aria-label="{{ __('site.nav.home') }}">
                 @foreach (config('site.nav') as $item)
                     @php($nav = $resolveNav($item))
-                    <a href="{{ $nav['href'] }}" @class(['nav-link', 'nav-link-active' => $nav['isActive']])>
-                        {{ __($item['label']) }}
-                    </a>
+
+                    @if (! empty($item['children']))
+                        <div class="nav-dropdown" data-nav-dropdown>
+                            <button
+                                type="button"
+                                data-nav-dropdown-trigger
+                                @class([
+                                    'nav-link nav-dropdown-trigger',
+                                    'nav-link-active' => $nav['isActive'],
+                                ])
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                            >
+                                {{ __($item['label']) }}
+                                <x-icons.chevron-down class="nav-dropdown-chevron size-3.5" />
+                            </button>
+
+                            <div class="nav-dropdown-menu" role="menu">
+                                @foreach ($item['children'] as $child)
+                                    @php($childNav = $resolveNav($child))
+                                    <a
+                                        href="{{ $childNav['href'] }}"
+                                        role="menuitem"
+                                        @class(['nav-dropdown-item', 'nav-dropdown-item-active' => $childNav['isActive']])
+                                    >
+                                        {{ __($child['label']) }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ $nav['href'] }}" @class(['nav-link', 'nav-link-active' => $nav['isActive']])>
+                            {{ __($item['label']) }}
+                        </a>
+                    @endif
                 @endforeach
             </nav>
 
@@ -69,21 +101,55 @@
                 <div class="flex flex-col gap-1 py-3">
                     @foreach (config('site.nav') as $item)
                         @php($nav = $resolveNav($item))
-                        <a
-                            href="{{ $nav['href'] }}"
-                            data-mobile-nav-link
-                            @class([
-                                'mobile-nav-link',
-                                'mobile-nav-link-active' => $nav['isActive'],
-                            ])
-                        >
-                            <span>{{ __($item['label']) }}</span>
-                            @if ($nav['isActive'])
-                                <span class="mobile-nav-link-dot" aria-hidden="true"></span>
-                            @else
-                                <x-icons.arrow-forward class="size-4 opacity-40" />
-                            @endif
-                        </a>
+
+                        @if (! empty($item['children']))
+                            <div data-mobile-nav-dropdown>
+                                <button
+                                    type="button"
+                                    data-mobile-nav-dropdown-toggle
+                                    @class([
+                                        'mobile-nav-link w-full',
+                                        'mobile-nav-link-active' => $nav['isActive'],
+                                    ])
+                                    aria-expanded="false"
+                                >
+                                    <span>{{ __($item['label']) }}</span>
+                                    <x-icons.chevron-down class="mobile-nav-dropdown-chevron size-4 opacity-40" />
+                                </button>
+
+                                <div class="mobile-nav-submenu" hidden>
+                                    @foreach ($item['children'] as $child)
+                                        @php($childNav = $resolveNav($child))
+                                        <a
+                                            href="{{ $childNav['href'] }}"
+                                            data-mobile-nav-link
+                                            @class([
+                                                'mobile-nav-sublink',
+                                                'mobile-nav-sublink-active' => $childNav['isActive'],
+                                            ])
+                                        >
+                                            {{ __($child['label']) }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            <a
+                                href="{{ $nav['href'] }}"
+                                data-mobile-nav-link
+                                @class([
+                                    'mobile-nav-link',
+                                    'mobile-nav-link-active' => $nav['isActive'],
+                                ])
+                            >
+                                <span>{{ __($item['label']) }}</span>
+                                @if ($nav['isActive'])
+                                    <span class="mobile-nav-link-dot" aria-hidden="true"></span>
+                                @else
+                                    <x-icons.arrow-forward class="size-4 opacity-40" />
+                                @endif
+                            </a>
+                        @endif
                     @endforeach
                 </div>
 

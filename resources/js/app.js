@@ -2,6 +2,7 @@ import './bootstrap';
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
+    initNavDropdown();
     initHeroSlider();
     initBackToTop();
     initScrollReveal();
@@ -41,6 +42,64 @@ function initMobileNav() {
         if (window.innerWidth >= 1280) {
             setOpen(false);
         }
+    });
+}
+
+function initNavDropdown() {
+    const dropdowns = document.querySelectorAll('[data-nav-dropdown]');
+
+    dropdowns.forEach((dropdown) => {
+        const trigger = dropdown.querySelector('[data-nav-dropdown-trigger]');
+
+        if (!trigger) {
+            return;
+        }
+
+        const setOpen = (open) => {
+            dropdown.classList.toggle('is-open', open);
+            trigger.setAttribute('aria-expanded', String(open));
+        };
+
+        trigger.addEventListener('click', (event) => {
+            event.stopPropagation();
+            setOpen(!dropdown.classList.contains('is-open'));
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        dropdowns.forEach((dropdown) => {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('is-open');
+                dropdown.querySelector('[data-nav-dropdown-trigger]')?.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        dropdowns.forEach((dropdown) => {
+            dropdown.classList.remove('is-open');
+            dropdown.querySelector('[data-nav-dropdown-trigger]')?.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    document.querySelectorAll('[data-mobile-nav-dropdown]').forEach((dropdown) => {
+        const toggle = dropdown.querySelector('[data-mobile-nav-dropdown-toggle]');
+        const submenu = dropdown.querySelector('.mobile-nav-submenu');
+
+        if (!toggle || !submenu) {
+            return;
+        }
+
+        toggle.addEventListener('click', () => {
+            const open = submenu.hasAttribute('hidden');
+            submenu.toggleAttribute('hidden', !open);
+            dropdown.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+        });
     });
 }
 

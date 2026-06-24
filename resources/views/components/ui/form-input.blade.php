@@ -5,6 +5,7 @@
     'required' => false,
     'placeholder' => '',
     'value' => '',
+    'autocomplete' => null,
 ])
 
 <div>
@@ -20,6 +21,7 @@
         name="{{ $name }}"
         value="{{ old($name, $value) }}"
         @if ($required) required @endif
+        @if ($autocomplete) autocomplete="{{ $autocomplete }}" @endif
         placeholder="{{ $placeholder }}"
         @class(['form-input', 'form-input-error' => $errors->has($name)])
     >

@@ -245,4 +245,20 @@ return [
         'switch_to' => 'العربية',
     ],
 
+    'auth' => [
+        'login' => 'Login',
+        'logout' => 'Logout',
+        'login_subtitle' => 'Enter your credentials to access your account',
+        'email' => 'Email Address',
+        'email_placeholder' => 'admin@life-org.org',
+        'password' => 'Password',
+        'password_placeholder' => '••••••••',
+        'remember' => 'Remember me',
+        'submit' => 'Sign In',
+        'back_home' => 'Back to Home',
+        'no_account' => "Don't have an account?",
+        'failed' => 'These credentials do not match our records.',
+        'throttle' => 'Too many attempts. Please try again in :seconds seconds.',
+    ],
+
 ];

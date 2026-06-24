@@ -28,6 +28,24 @@
                     <span class="hidden md:inline">{{ __('site.settings.page_title') }}</span>
                 </a>
 
+                @auth
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="inline-flex items-center gap-1.5 font-medium text-secondary transition-colors hover:text-primary">
+                            <x-icons.lock class="size-4" />
+                            <span class="hidden md:inline">{{ __('site.auth.logout') }}</span>
+                        </button>
+                    </form>
+                @else
+                    <a
+                        href="{{ route('login') }}"
+                        class="inline-flex items-center gap-1.5 font-medium text-secondary transition-colors hover:text-primary"
+                    >
+                        <x-icons.lock class="size-4" />
+                        <span class="hidden md:inline">{{ __('site.auth.login') }}</span>
+                    </a>
+                @endauth
+
                 <a
                     href="{{ route('locale.switch', app()->getLocale() === 'ar' ? 'en' : 'ar') }}"
                     class="inline-flex items-center gap-1.5 font-medium text-secondary transition-colors hover:text-primary"

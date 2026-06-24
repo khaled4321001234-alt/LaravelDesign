@@ -23,7 +23,15 @@ return [
         ['route' => 'news.index', 'label' => 'site.nav.news'],
         ['route' => '#', 'label' => 'site.nav.reports'],
         ['route' => '#', 'label' => 'site.nav.join'],
-        ['route' => 'contact.index', 'label' => 'site.nav.contact'],
+        [
+            'route' => 'contact.index',
+            'label' => 'site.nav.contact',
+            'children' => [
+                ['route' => 'contact.index', 'label' => 'site.nav.contact'],
+                ['route' => 'contact.index', 'label' => 'site.nav.contact'],
+                ['route' => 'contact.index', 'label' => 'site.nav.contact'],
+            ],
+        ],
     ],
 
     'hero_slides' => [
