@@ -72,7 +72,7 @@
             </nav>
 
             <div class="flex items-center justify-end gap-3">
-                <a href="#" class="btn-primary hidden sm:inline-flex">
+                <a href="{{ route('donate.index') }}" class="btn-primary hidden sm:inline-flex">
                     <x-icons.heart class="size-4" />
                     {{ __('site.nav.donate') }}
                 </a>
@@ -154,7 +154,7 @@
                 </div>
 
                 <div class="border-t border-border py-3">
-                    <a href="#" data-mobile-nav-link class="btn-primary w-full">
+                    <a href="{{ route('donate.index') }}" data-mobile-nav-link class="btn-primary w-full">
                         <x-icons.heart class="size-4" />
                         {{ __('site.nav.donate') }}
                     </a>

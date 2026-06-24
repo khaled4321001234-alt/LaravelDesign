@@ -42,7 +42,7 @@
             @endforeach
 
             <div class="mt-8 flex flex-wrap gap-4">
-                <a href="#" class="btn-primary">
+                <a href="{{ route('donate.index') }}" class="btn-primary">
                     <x-icons.heart class="size-4" />
                     {{ __('site.hero.donate') }}
                 </a>

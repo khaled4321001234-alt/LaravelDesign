@@ -8,6 +8,14 @@ return [
         'phone' => '+970 599 000 000',
     ],
 
+    'donation_categories' => [
+        'general',
+        'emergency',
+        'orphan',
+        'education',
+        'health',
+    ],
+
     'social' => [
         ['name' => 'facebook', 'url' => '#', 'icon' => 'facebook'],
         ['name' => 'twitter', 'url' => '#', 'icon' => 'twitter'],

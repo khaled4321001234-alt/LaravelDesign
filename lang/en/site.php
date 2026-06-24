@@ -50,6 +50,38 @@ return [
         ],
     ],
 
+    'donate' => [
+        'page_title' => 'Donate Now',
+        'page_subtitle' => 'Support our humanitarian programs and be part of creating hope in the lives of those in need.',
+        'form_title' => 'Donation Form',
+        'form_desc' => 'Fill in the details below and we will contact you to complete your donation.',
+        'success' => 'Your donation request has been received. We will contact you soon to complete the process.',
+        'mail_subject' => 'Donation Request: :amount — :category',
+        'mail_heading' => 'New donation request from LiFe website',
+        'categories' => [
+            'general' => 'General Donation',
+            'emergency' => 'Emergency Response',
+            'orphan' => 'Orphan Sponsorship',
+            'education' => 'Education',
+            'health' => 'Health',
+        ],
+        'form' => [
+            'name' => 'Full Name',
+            'name_placeholder' => 'Enter your full name',
+            'email' => 'Email Address',
+            'email_placeholder' => 'example@email.com',
+            'phone' => 'Phone Number',
+            'phone_placeholder' => '+970 599 000 000',
+            'amount' => 'Donation Amount',
+            'amount_placeholder' => '100',
+            'category' => 'Donation Category',
+            'category_placeholder' => 'Select a category',
+            'message' => 'Notes (optional)',
+            'message_placeholder' => 'Any additional notes...',
+            'submit' => 'Submit Donation Request',
+        ],
+    ],
+
     'hero' => [
         'title' => 'We Build Life',
         'title_highlight' => 'We Create Hope',

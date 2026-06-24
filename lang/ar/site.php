@@ -50,6 +50,38 @@ return [
         ],
     ],
 
+    'donate' => [
+        'page_title' => 'تبرع الآن',
+        'page_subtitle' => 'ساهم في دعم برامجنا الإنسانية وكن جزءاً من صنع الأمل في حياة المحتاجين.',
+        'form_title' => 'نموذج التبرع',
+        'form_desc' => 'املأ البيانات أدناه وسنتواصل معك لإتمام عملية التبرع.',
+        'success' => 'تم استلام طلب تبرعك بنجاح. سنتواصل معك قريباً لإتمام العملية.',
+        'mail_subject' => 'طلب تبرع: :amount — :category',
+        'mail_heading' => 'طلب تبرع جديد من موقع LiFe',
+        'categories' => [
+            'general' => 'تبرع عام',
+            'emergency' => 'الاستجابة الطارئة',
+            'orphan' => 'كفالة الأيتام',
+            'education' => 'التعليم',
+            'health' => 'الصحة',
+        ],
+        'form' => [
+            'name' => 'الاسم الكامل',
+            'name_placeholder' => 'أدخل اسمك الكامل',
+            'email' => 'البريد الإلكتروني',
+            'email_placeholder' => 'example@email.com',
+            'phone' => 'رقم الهاتف',
+            'phone_placeholder' => '+970 599 000 000',
+            'amount' => 'مبلغ التبرع',
+            'amount_placeholder' => '100',
+            'category' => 'وجهة التبرع',
+            'category_placeholder' => 'اختر وجهة التبرع',
+            'message' => 'ملاحظات (اختياري)',
+            'message_placeholder' => 'أي ملاحظات إضافية...',
+            'submit' => 'إرسال طلب التبرع',
+        ],
+    ],
+
     'hero' => [
         'title' => 'نبني الحياة',
         'title_highlight' => 'نصنع الأمل',
