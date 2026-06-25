@@ -31,7 +31,7 @@
             </a>
 
             <nav class="hidden items-center justify-center gap-0.5 xl:flex" aria-label="{{ __('site.nav.home') }}">
-                @foreach (config('site.nav') as $item)
+                @foreach ($menuItems as $item)
                     @php($nav = $resolveNav($item))
 
                     @if (! empty($item['children']))
@@ -99,7 +99,7 @@
         >
             <div class="mobile-nav-panel-inner">
                 <div class="flex flex-col gap-1 py-3">
-                    @foreach (config('site.nav') as $item)
+                    @foreach ($menuItems as $item)
                         @php($nav = $resolveNav($item))
 
                         @if (! empty($item['children']))

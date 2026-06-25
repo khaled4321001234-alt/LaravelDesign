@@ -9,11 +9,11 @@
                 </span>
                 <a href="mailto:{{ config('site.contact.email') }}" class="inline-flex items-center gap-1.5 transition-colors hover:text-primary">
                     <x-icons.mail class="size-4 text-primary" />
-                    {{ config('site.contact.email') }}
+                    {{ $VSPVar['email'] }}
                 </a>
                 <a href="tel:{{ config('site.contact.phone') }}" class="inline-flex items-center gap-1.5 transition-colors hover:text-primary" dir="ltr">
                     <x-icons.phone class="size-4 text-primary" />
-                    {{ config('site.contact.phone') }}
+                    {{ $VSPVar['phoneNo'] }}
                 </a>
             </div>
 
@@ -53,9 +53,8 @@
                     <x-icons.globe class="size-4" />
                     {{ __('site.locale.switch_to') }}
                 </a>
-
                 <div class="flex items-center gap-3">
-                    @foreach (config('site.social') as $social)
+                    @foreach ($socials as $social)
                         <a href="{{ $social['url'] }}" class="text-text-muted transition-colors hover:text-primary hover:scale-110" aria-label="{{ $social['name'] }}">
                             <x-dynamic-component :component="'icons.' . $social['icon']" class="size-4" />
                         </a>
