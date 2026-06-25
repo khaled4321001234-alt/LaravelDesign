@@ -10,8 +10,9 @@
                 'opacity-0' => $index !== 0,
             ])
         >
-            <img
-                src="{{ asset($slide['image']) }}"
+            <img 
+                
+                src="{{ url('images/images/' . ($slide['image'] ?? '')) }}"
                 alt=""
                 @class([
                     'hero-slide-img size-full object-cover',
@@ -31,12 +32,12 @@
                     @class(['transition-opacity duration-500', 'hidden' => $index !== 0, 'hero-content-enter' => $index === 0])
                 >
                     <h1 class="text-4xl font-extrabold leading-tight md:text-5xl lg:text-[3.25rem] text-balance">
-                        {{ __($slide['title_key']) }}
+                        {!! $slide['title'] !!}
                         <br>
-                        <span class="text-primary">{{ __($slide['title_highlight_key']) }}</span>
+                        <span class="text-primary">{!! $slide['title_highlight'] !!}</span>
                     </h1>
                     <p class="mt-5 max-w-md text-base leading-relaxed text-white/90 md:text-lg">
-                        {{ __($slide['subtitle_key']) }}
+                        {!! $slide['subtitle'] !!}
                     </p>
                 </div>
             @endforeach

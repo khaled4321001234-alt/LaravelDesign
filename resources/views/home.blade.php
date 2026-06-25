@@ -54,9 +54,9 @@
                 @foreach ($projects as $index => $project)
                     <x-ui.project-card
                         :image="$project['image']"
-                        :title="__($project['title_key'])"
-                        :location="__($project['location_key'])"
-                        :progress="$project['progress']"
+                        :title="$project['title_key']"
+                        :location="$project['location_key']"
+                        :progress="$project['progress'] ?? 0"
                         @class(['reveal', 'reveal-delay-' . min($index + 1, 3)])
                     />
                 @endforeach
@@ -138,7 +138,10 @@
             <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
                 @foreach ($partners as $index => $partner)
                     <div @class(['partner-logo reveal', 'reveal-delay-' . min($index + 1, 4)])>
-                        <img src="{{ asset($partner['logo']) }}" alt="{{ $partner['name'] }}" class="max-h-full max-w-full object-contain" loading="lazy">
+                        <img 
+                        
+                        src="{{ url('images/images/' . ($partner['logo'] ?? '')) }}"
+                         alt="{{ $partner['name'] }}" class="max-h-full max-w-full object-contain" loading="lazy">
                     </div>
                 @endforeach
             </div>

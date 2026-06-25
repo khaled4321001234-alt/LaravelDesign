@@ -142,7 +142,7 @@ class ViewServiceProvider extends ServiceProvider
 
 
                   $menuItems = $nav;  
-                  dd($menuItems);
+                  
                 return compact('menuItems', 'VSPVar','socials');
             });
 
