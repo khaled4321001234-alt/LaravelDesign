@@ -1,9 +1,14 @@
 import './bootstrap';
+import Swiper from 'swiper';
+import { Navigation, Grid } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/grid';
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initNavDropdown();
     initHeroSlider();
+    initPartnersSlider();
     initBackToTop();
     initScrollReveal();
     initCountUp();
@@ -180,6 +185,46 @@ function initHeroSlider() {
 
     show(0);
     startAuto();
+}
+
+function initPartnersSlider() {
+    const slider = document.getElementById('partners-swiper');
+
+    if (!slider) {
+        return;
+    }
+
+    new Swiper(slider, {
+        modules: [Navigation, Grid],
+        slidesPerView: 2,
+        grid: {
+            rows: 2,
+            fill: 'row',
+        },
+        spaceBetween: 16,
+        navigation: {
+            nextEl: '.partners-swiper-next',
+            prevEl: '.partners-swiper-prev',
+        },
+        breakpoints: {
+            480: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 28,
+            },
+            1280: {
+                slidesPerView: 6,
+                spaceBetween: 32,
+            },
+        },
+    });
 }
 
 function initBackToTop() {

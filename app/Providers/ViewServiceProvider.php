@@ -26,9 +26,7 @@ class ViewServiceProvider extends ServiceProvider
     public function register(): void {}
 
     public function boot(): void
-    {   
-    Cache::flush();
-
+    {
         View::composer('*', function ($view) {
 
             $locale = app()->getLocale(); // 'ar' or 'en'
@@ -77,27 +75,6 @@ class ViewServiceProvider extends ServiceProvider
                 ];
 
 
-                // Menu items with recursive children, cached separately
-                // so we can invalidate just the menu when menu items change
-               /* $menuItems = Cache::remember("menu_items_{$locale}", 600, function () {
-                    return MenuItem::select(
-                        'id',
-                        'rank',
-                        columnLocalize('title', table: 'menu_items') . ' as title',
-                        'link'
-                    )
-                        ->whereNull('parent_id')
-                        ->with(['childrenRecursive' => function ($q) {
-                            $q->select(
-                                'id', 'parent_id', 'rank',
-                                columnLocalize('title', table: 'menu_items') . ' as title',
-                                'link'
-                            )->orderBy('rank');
-                        }])
-                        ->orderBy('rank')
-                        ->get();
-                }); */
-
                 $menuItems = Cache::remember("menu_items_{$locale}", 600, function () {
                     return MenuItem::select(
                         'id',
@@ -120,8 +97,7 @@ class ViewServiceProvider extends ServiceProvider
                     ->get();
                 });
 
-                function mapMenuItem($item)
-                {
+                $mapMenuItem = function ($item) use (&$mapMenuItem) {
                     $data = [
                         'route' => $item->link ?? '#',
                         'label' => $item->title,
@@ -129,21 +105,18 @@ class ViewServiceProvider extends ServiceProvider
 
                     if ($item->childrenRecursive && $item->childrenRecursive->count() > 0) {
                         $data['children'] = $item->childrenRecursive
-                            ->map(fn ($child) => mapMenuItem($child))
+                            ->map(fn ($child) => $mapMenuItem($child))
                             ->toArray();
                     }
 
                     return $data;
-                }
+                };
 
-                $nav = $menuItems
-                    ->map(fn ($item) => mapMenuItem($item))
+                $menuItems = $menuItems
+                    ->map(fn ($item) => $mapMenuItem($item))
                     ->toArray();
 
-
-                  $menuItems = $nav;  
-                  dd($menuItems);
-                return compact('menuItems', 'VSPVar','socials');
+                return compact('menuItems', 'VSPVar', 'socials');
             });
 
             $view->with($payload);
