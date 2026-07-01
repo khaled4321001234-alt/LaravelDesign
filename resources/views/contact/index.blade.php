@@ -30,16 +30,16 @@
                     <x-ui.contact-info-card
                         icon="mail"
                         :title="__('site.contact.email_title')"
-                        :value="config('site.contact.email')"
-                        :href="'mailto:' . config('site.contact.email')"
+                        :value="$VSPVar['email']"
+                        :href="'mailto:' . $VSPVar['email']"
                         class="reveal reveal-delay-2"
                     />
 
                     <x-ui.contact-info-card
                         icon="phone"
                         :title="__('site.contact.phone_title')"
-                        :value="config('site.contact.phone')"
-                        :href="'tel:' . config('site.contact.phone')"
+                        :value="$VSPVar['phoneNo']"
+                        :href="'tel:' . $VSPVar['phoneNo']"
                         class="reveal reveal-delay-3"
                     />
 
@@ -53,7 +53,7 @@
                     <div class="reveal rounded-theme-lg border border-border bg-surface p-5">
                         <h3 class="text-sm font-semibold text-secondary">{{ __('site.contact.follow_us') }}</h3>
                         <div class="mt-4 flex gap-3">
-                            @foreach (config('site.social') as $social)
+                            @foreach ($socials as $social)
                                 <a
                                     href="{{ $social['url'] }}"
                                     class="flex size-10 items-center justify-center rounded-full bg-primary-light text-primary transition-all duration-200 hover:scale-110 hover:bg-primary hover:text-text-inverse"

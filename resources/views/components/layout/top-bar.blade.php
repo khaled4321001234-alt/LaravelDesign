@@ -19,7 +19,7 @@
 
             {{-- Language + Settings + Social (end in RTL) --}}
             <div class="flex items-center gap-5">
-                <a
+                <!-- <a
                     href="{{ route('settings.index') }}"
                     class="inline-flex items-center gap-1.5 font-medium text-secondary transition-colors hover:text-primary"
                     title="{{ __('site.settings.page_title') }}"
@@ -27,7 +27,7 @@
                     <x-icons.settings class="size-4" />
                     <span class="hidden md:inline">{{ __('site.settings.page_title') }}</span>
                 </a>
-
+ -->
                 @auth
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf

@@ -34,7 +34,7 @@ class ContactController extends Controller
             'contactUsTxt4' => optional($settings->get(25))->{$descCol} ?? '',
         ];
 
-        return view('frontend.contact', compact('addresses', 'data'));
+        return view('contact.index', compact('addresses', 'data'));
     }
 
     /**

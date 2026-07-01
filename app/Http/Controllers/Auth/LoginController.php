@@ -15,7 +15,10 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
-
+    public function showLoginForm()
+    {   
+       return view('auth.login');
+    }
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
@@ -24,7 +27,23 @@ class LoginController extends Controller
 
         return redirect()->intended(route('home'));
     }
+    public function login(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
 
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('home'));
+    }
+     public function logout(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
+    }
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

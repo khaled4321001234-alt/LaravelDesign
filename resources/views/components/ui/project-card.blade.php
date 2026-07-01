@@ -3,6 +3,7 @@
     'title',
     'location',
     'progress',
+    'url'
 ])
 
 <div {{ $attributes->merge(['class' => 'card-base card-hover overflow-hidden']) }}>
@@ -26,7 +27,7 @@
                 <div class="progress-fill" data-progress="{{ $progress }}"></div>
             </div>
         </div>
-        <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-primary-hover">
+        <a href="{{$url}}" class="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-primary-hover">
             {{ __('site.projects.details') }}
             <x-icons.arrow-forward class="size-4" />
         </a>

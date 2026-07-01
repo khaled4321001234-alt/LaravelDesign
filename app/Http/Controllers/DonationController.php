@@ -20,7 +20,7 @@ class DonationController extends Controller
             }
         } catch (\Exception $e) {}
 
-        return view('frontend.donate', compact('settings'));
+        return view('donate.index', compact('settings'));
     }
 
     public function store(Request $request)

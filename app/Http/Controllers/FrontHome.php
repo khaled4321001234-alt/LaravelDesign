@@ -69,7 +69,7 @@ class FrontHome extends Controller
         columnLocalize('description', table: 'products') . ' as description',
         'image as icon'
     )
-    ->where('type', 'HowWeHelp')
+    ->where('type', 'programs')
     //->where('visible', 1)
     ->orderByDesc('id')
     ->take(6)
@@ -77,9 +77,11 @@ class FrontHome extends Controller
     ->toArray();
    
     $projects = Products::select(
-        columnLocalize('slug', table: 'products') . ' as location_key',
+        columnLocalize('location', table: 'products') . ' as location_key',
+        columnLocalize('slug', table: 'products') . ' as slug',
         columnLocalize('title', table: 'products') . ' as title_key',
-        'image'
+        'image',
+        'progress',
     )
     ->where('type', 'projects')
     //->where('visible', 1)
@@ -94,6 +96,7 @@ class FrontHome extends Controller
         columnLocalize('description', table: 'products') . ' as excerpt_key',
         columnLocalize('description', table: 'products') . ' as body_key',
         'image',
+        'type',
         DB::raw('created_at as date_key'),
         DB::raw('1 as featured')
     )
@@ -309,7 +312,10 @@ class FrontHome extends Controller
             ->paginate(3);
 
         if (in_array($category, ['about-us'])) {
-            return view('frontend.table', compact('products', 'gridName'));
+            $article =  $products ;
+            $relatedNews =  $products ;
+            
+            return view('news.show', compact('article','relatedNews', 'gridName'));
         }
 
         return view('news.index', compact('products', 'gridName', 'category'));

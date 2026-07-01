@@ -1,0 +1,14 @@
+/* =========================================
+   SOFT NAHDI PINK GRADIENT THEME
+   WITH CURVED HERO / PAGE TITLE AREA
+   (Blush / Rose / Feminine Style)
+========================================= */
+
+/* 1️⃣ Color System (Soft Nahdi Pink) */
+:root {
+  --mint-darkest: #7a3b4a;   /* Deep rose */
+  --mint-dark: #9c5b6a;      /* Muted dark pink */
+  --mint-main: #c48796;      /* Primary nahdi pink */
+  --mint-light: #e1b6c1;     /* Soft blush */
+  --mint-lightest: #f6e6ea;  /* Very soft pink */
+}

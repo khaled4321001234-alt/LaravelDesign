@@ -12,14 +12,14 @@ class MenuController extends Controller
     {
         // FIX: cache was being cleared on every page load of the menu list.
         //      Removed clearFrontendCache() from here — it should only run on write operations.
-        $menuItems = MenuItem::select(
+        $menuItemsR = MenuItem::select(
             columnLocalize('title', table: 'menu_items') . ' as title',
             'id',
         )
             ->orderBy('rank')
             ->get();
-
-        return view('dashboard.menuItem.menuItem', compact('menuItems'));
+        
+        return view('dashboard.menuItem.menuItem', compact('menuItemsR'));
     }
 
     public function create()

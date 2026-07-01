@@ -38,7 +38,7 @@
             </div>
 
             <div class="mt-10 text-center reveal">
-                <a href="#" class="btn-secondary">{{ __('site.programs.view_all') }}</a>
+                <a href="{{url('category/programs')}}" class="btn-secondary">{{ __('site.programs.view_all') }}</a>
             </div>
         </div>
     </section>
@@ -52,18 +52,20 @@
 
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($projects as $index => $project)
-                    <x-ui.project-card
-                        :image="$project['image']"
+                    <x-ui.project-card 
+                        :image="url('images/thumb_400/' . ($project['image']?? ''))"
                         :title="$project['title_key']"
                         :location="$project['location_key']"
+                        :url="route('single.product', $project['slug'])"
                         :progress="$project['progress'] ?? 0"
+
                         @class(['reveal', 'reveal-delay-' . min($index + 1, 3)])
                     />
                 @endforeach
             </div>
 
             <div class="mt-10 text-center reveal">
-                <a href="#" class="btn-primary">{{ __('site.projects.view_all') }}</a>
+                <a href="{{ url('category/projects') }}" class="btn-primary">{{ __('site.projects.view_all') }}</a>
             </div>
         </div>
     </section>
@@ -78,17 +80,17 @@
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ($news as $index => $item)
                     <x-ui.news-card
-                        :image="$item['image']"
+                        :image="url('images/thumb_400/' . ($item['image']?? ''))"
                         :date="__($item['date_key'])"
-                        :title="__($item['title_key'])"
-                        :url="route('news', $item['slug'])"
+                        :title="$item['title_key']"
+                        :url="route('single.product', $item['slug'])"
                         @class(['reveal', 'reveal-delay-' . min($index + 1, 4)])
                     />
                 @endforeach
             </div>
 
             <div class="mt-10 text-center reveal">
-                <a href="{{ route('news') }}" class="btn-secondary">{{ __('site.news.view_all') }}</a>
+                <a href="{{ url('category/news') }}" class="btn-secondary">{{ __('site.news.view_all') }}</a>
             </div>
         </div>
     </section>

@@ -1,6 +1,6 @@
 <x-layout.app :title="__('site.news.page_title')">
     <x-layout.page-banner
-        :title="__('site.news.page_title')"
+        :title="$gridName"
         :subtitle="__('site.news.page_subtitle')"
     />
 

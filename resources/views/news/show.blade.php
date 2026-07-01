@@ -49,7 +49,7 @@
                             :image="url('images/thumb_400/' . ($item['image']?? ''))"
                             :date="$item['date']"
                             :title="$item['title']"
-                            :url="route('news', $item['slug'])"
+                            :url="route('single.product', $item['slug'])"
                             @class(['reveal', 'reveal-delay-' . min($index + 1, 3)])
                         />
                     @endforeach
